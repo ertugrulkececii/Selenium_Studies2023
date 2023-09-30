@@ -19,7 +19,7 @@ public class TestBase_BeforeClass {
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
     }
-   @Ignore
+   @AfterClass
     public static void teardown(){
         driver.close();
     }

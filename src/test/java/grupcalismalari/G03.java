@@ -1,9 +1,13 @@
 package grupcalismalari;
 
+import org.junit.After;
+import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 import utilities.TestBase;
 import utilities.TestBase_BeforeClass;
 
@@ -24,8 +28,7 @@ public class G03 extends TestBase_BeforeClass {
     //12. “Calculate Costs” butonuna basin sonra “purchase” butonuna basin
     //13. “Foreign currency cash was successfully purchased.” yazisinin ciktigini
     //kontrol edin.
-
-    @Test
+    @Before
     public void islemler() {
         driver.get("http://zero.webappsecurity.com/");
         driver.findElement(By.id("signin_button")).click();
@@ -39,13 +42,26 @@ public class G03 extends TestBase_BeforeClass {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.findElement(By.xpath("(//a[normalize-space()='More Services'])[1]")).click();
         driver.findElement(By.xpath("(//span[@id='pay_bills_link'])[1]")).click();
-        driver.findElement(By.xpath("//a[normalize-space()='Purchase Foreign Currency']")).click();
-        driver.findElement(By.xpath("//select[@id='pc_currency']")).sendKeys("Eurozone");
+        driver.findElement(By.cssSelector("a[href='#ui-tabs-3']")).click();
+    }
+     @After
+    public void calculate() {
         driver.findElement(By.xpath("//input[@id='pc_amount']")).sendKeys("25");
         driver.findElement(By.xpath("//label[normalize-space()='Selected currency']")).click();
         driver.findElement(By.xpath("//input[@id='pc_calculate_costs']")).click();
         driver.findElement(By.xpath("//input[@id='purchase_cash']")).click();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        driver.findElement(By.xpath("(//div[@id='alert_content'])[1]"));
+        String expected = "Foreign currency cash was successfully purchased.";
+        WebElement actual1 = driver.findElement(By.xpath("//div[@id='alert_content']"));
+        String actual = actual1.getText();
+        Assert.assertTrue(actual.contains(expected));
+    }
+    @Test
+    public void dropdownSelect() {
+        WebElement dropdown = driver.findElement(By.xpath("//select[@id='pc_currency']"));
+        Select select = new Select(dropdown);
+        select.selectByIndex(6);
+
+
     }
 }
