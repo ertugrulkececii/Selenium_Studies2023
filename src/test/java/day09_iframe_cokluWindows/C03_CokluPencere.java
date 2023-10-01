@@ -39,6 +39,6 @@ public class C03_CokluPencere extends TestBase {
         actualTitle = driver.getTitle();
         Assert.assertTrue(actualTitle.contains(expectedTitleIcerik));
 
-        bekle(5);
+        bekle(4);
     }
 }
