@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import utilities.TestBase;
 
-public class C02 extends TestBase {
+public class C02_dragAndDrop extends TestBase {
 
 
     @Test
