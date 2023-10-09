@@ -35,7 +35,7 @@ public class C02_GetScreenshotTumSayfa extends TestBase {
 
         // 2.adim fotografi kaydedecegimiz dosyayi olusturalim, dosya yolunu yazalim
 
-        File tumSayfaScreenshot = new File("target/screenShots/tumSayfaScreenshot.png");
+        File tumSayfaScreenshot = new File("target/screenShots/tumSayfaScreenshot.jpg");//target/screenShots
 
         // 3.adim bir gecici dosya olusturup buna tss objesi ile cektigimiz fotografi kaydedelim
 
