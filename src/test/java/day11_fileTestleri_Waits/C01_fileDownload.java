@@ -18,7 +18,7 @@ public class C01_fileDownload extends TestBase {
         driver.get("https://the-internet.herokuapp.com/download");
         //3. logo.jpg dosyasını indirelim
         bekle(1);
-        driver.findElement(By.xpath("//a[text()='logo.jpg']")).click();
+        driver.findElement(By.xpath("//*[text()='logo.png']")).click();
 
         //4. Dosyanın başarıyla indirilip indirilmediğini test edelim
         bekle(5);
